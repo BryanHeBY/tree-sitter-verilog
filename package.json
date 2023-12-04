@@ -32,10 +32,11 @@
     "build": "tree-sitter generate && node-gyp build",
     "wasm": "tree-sitter generate --next-abi && tree-sitter build-wasm",
     "generate": "tree-sitter generate",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "install": "node-gyp rebuild"
   },
   "dependencies": {
-    "nan": "^2.15.0"
+    "nan": "^2.18.0"
   },
   "devDependencies": {
     "@drom/eslint-config": "^0.11.0",
@@ -46,5 +47,9 @@
   },
   "eslintConfig": {
     "extends": "@drom/eslint-config/eslint4/node8"
+  },
+  "gypfile": true,
+  "bin": {
+    "tree-sitter-verilog": "bin/test-uvm.js"
   }
 }

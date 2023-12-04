@@ -19,6 +19,10 @@ include = [
 [lib]
 path = "bindings/rust/lib.rs"
 
+[[bin]]
+name = "tree-sitter-verilog"
+path = "bindings/rust/main.rs"
+
 [dependencies]
 tree-sitter = "0.20"
 
