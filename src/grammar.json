@@ -7823,6 +7823,22 @@
         ]
       }
     },
+    "interface_identifier_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "interface_identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "unpacked_dimension"
+          }
+        }
+      ]
+    },
     "list_of_interface_identifiers": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -7830,20 +7846,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "interface_identifier"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "unpacked_dimension"
-                }
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "interface_identifier_declaration"
           },
           {
             "type": "REPEAT",
@@ -7858,20 +7862,8 @@
                     "value": ","
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "interface_identifier"
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "unpacked_dimension"
-                        }
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "interface_identifier_declaration"
                   }
                 ]
               }
@@ -7946,6 +7938,22 @@
         ]
       }
     },
+    "port_identifier_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "port_identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "unpacked_dimension"
+          }
+        }
+      ]
+    },
     "list_of_port_identifiers": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -7953,20 +7961,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "port_identifier"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "unpacked_dimension"
-                }
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "port_identifier_declaration"
           },
           {
             "type": "REPEAT",
@@ -7981,20 +7977,8 @@
                     "value": ","
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "port_identifier"
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "unpacked_dimension"
-                        }
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "port_identifier_declaration"
                   }
                 ]
               }
@@ -8069,6 +8053,47 @@
         ]
       }
     },
+    "tf_variable_identifier_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "port_identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable_dimension"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "expression"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "list_of_tf_variable_identifiers": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -8076,45 +8101,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "port_identifier"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "variable_dimension"
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "PREC_LEFT",
-                    "value": 0,
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "="
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "expression"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "tf_variable_identifier_declaration"
           },
           {
             "type": "REPEAT",
@@ -8129,45 +8117,8 @@
                     "value": ","
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "port_identifier"
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "variable_dimension"
-                        }
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "PREC_LEFT",
-                            "value": 0,
-                            "content": {
-                              "type": "SEQ",
-                              "members": [
-                                {
-                                  "type": "STRING",
-                                  "value": "="
-                                },
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "expression"
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "tf_variable_identifier_declaration"
                   }
                 ]
               }
@@ -8242,6 +8193,22 @@
         ]
       }
     },
+    "variable_identifier_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "variable_identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable_dimension"
+          }
+        }
+      ]
+    },
     "list_of_variable_identifiers": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -8249,20 +8216,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "variable_identifier"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "variable_dimension"
-                }
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "variable_identifier_declaration"
           },
           {
             "type": "REPEAT",
@@ -8277,20 +8232,8 @@
                     "value": ","
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "variable_identifier"
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "variable_dimension"
-                        }
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "variable_identifier_declaration"
                   }
                 ]
               }
@@ -8299,6 +8242,47 @@
         ]
       }
     },
+    "variable_port_identifier_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "port_identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable_dimension"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "constant_expression"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "list_of_variable_port_identifiers": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -8306,45 +8290,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "port_identifier"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "variable_dimension"
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "PREC_LEFT",
-                    "value": 0,
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "="
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "constant_expression"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "variable_port_identifier_declaration"
           },
           {
             "type": "REPEAT",
@@ -8359,45 +8306,8 @@
                     "value": ","
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "port_identifier"
-                      },
-                      {
-                        "type": "REPEAT",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "variable_dimension"
-                        }
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "PREC_LEFT",
-                            "value": 0,
-                            "content": {
-                              "type": "SEQ",
-                              "members": [
-                                {
-                                  "type": "STRING",
-                                  "value": "="
-                                },
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "constant_expression"
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "variable_port_identifier_declaration"
                   }
                 ]
               }
@@ -31531,6 +31441,18 @@
     [
       "module_path_primary",
       "primary_literal"
+    ],
+    [
+      "port_identifier_declaration",
+      "variable_identifier_declaration"
+    ],
+    [
+      "port_identifier_declaration",
+      "variable_port_identifier_declaration"
+    ],
+    [
+      "port_identifier_declaration",
+      "variable_dimension"
     ]
   ],
   "precedences": [],

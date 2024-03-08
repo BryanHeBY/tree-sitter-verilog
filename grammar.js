@@ -1492,44 +1492,54 @@ const rules = {
 
   list_of_genvar_identifiers: $ => sep1(',', $.genvar_identifier),
 
-  list_of_interface_identifiers: $ => sep1(',', seq(
+  interface_identifier_declaration: $ => seq(
     $.interface_identifier,
     repeat($.unpacked_dimension)
-  )),
+  ),
+
+  list_of_interface_identifiers: $ => sep1(',', $.interface_identifier_declaration),
 
   list_of_net_decl_assignments: $ => sep1(',', $.net_decl_assignment),
 
   list_of_param_assignments: $ => sep1(',', $.param_assignment),
 
-  list_of_port_identifiers: $ => sep1(',', seq(
+  port_identifier_declaration: $ => seq(
     $.port_identifier,
     repeat($.unpacked_dimension)
-  )),
+  ),
+
+  list_of_port_identifiers: $ => sep1(',', $.port_identifier_declaration),
 
   list_of_udp_port_identifiers: $ => sep1(',', $.port_identifier),
 
   list_of_specparam_assignments: $ => sep1(',', $.specparam_assignment),
 
-  list_of_tf_variable_identifiers: $ => sep1(',', seq(
+  tf_variable_identifier_declaration: $ => seq(
     $.port_identifier,
     repeat($.variable_dimension),
     optseq('=', $.expression)
-  )),
+  ),
+
+  list_of_tf_variable_identifiers: $ => sep1(',', $.tf_variable_identifier_declaration),
 
   list_of_type_assignments: $ => sep1(',', $.type_assignment),
 
   list_of_variable_decl_assignments: $ => sep1(',', $.variable_decl_assignment),
 
-  list_of_variable_identifiers: $ => sep1(',', seq(
+  variable_identifier_declaration: $ => seq(
     $.variable_identifier,
     repeat($.variable_dimension)
-  )),
+  ),
 
-  list_of_variable_port_identifiers: $ => sep1(',', seq(
+  list_of_variable_identifiers: $ => sep1(',', $.variable_identifier_declaration),
+
+  variable_port_identifier_declaration: $ => seq(
     $.port_identifier,
     repeat($.variable_dimension),
     optseq('=', $.constant_expression)
-  )),
+  ),
+
+  list_of_variable_port_identifiers: $ => sep1(',', $.variable_port_identifier_declaration),
 
   /* A.2.4 Declaration assignments */
 
@@ -4993,5 +5003,8 @@ module.exports = grammar({
     [$.event_expression, $.expression_or_dist, $.let_actual_arg],
     [$.module_path_primary, $.primary],
     [$.module_path_primary, $.primary_literal],
+    [$.port_identifier_declaration, $.variable_identifier_declaration],
+    [$.port_identifier_declaration, $.variable_port_identifier_declaration],
+    [$.port_identifier_declaration, $.variable_dimension],
   ],
 });

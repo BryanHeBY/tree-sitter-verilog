@@ -36,7 +36,7 @@
     "install": "node-gyp rebuild"
   },
   "dependencies": {
-    "nan": "^2.18.0"
+    "nan": "^2.19.0"
   },
   "devDependencies": {
     "@drom/eslint-config": "^0.11.0",

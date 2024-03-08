@@ -5993,6 +5993,25 @@
     }
   },
   {
+    "type": "interface_identifier_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unpacked_dimension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "interface_instantiation",
     "named": true,
     "fields": {},
@@ -6467,11 +6486,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "unpacked_dimension",
+          "type": "interface_identifier_declaration",
           "named": true
         }
       ]
@@ -6633,11 +6648,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "unpacked_dimension",
+          "type": "port_identifier_declaration",
           "named": true
         }
       ]
@@ -6682,15 +6693,7 @@
       "required": true,
       "types": [
         {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "variable_dimension",
+          "type": "tf_variable_identifier_declaration",
           "named": true
         }
       ]
@@ -6765,11 +6768,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "variable_dimension",
+          "type": "variable_identifier_declaration",
           "named": true
         }
       ]
@@ -6784,15 +6783,7 @@
       "required": true,
       "types": [
         {
-          "type": "constant_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "variable_dimension",
+          "type": "variable_port_identifier_declaration",
           "named": true
         }
       ]
@@ -9141,6 +9132,25 @@
       "types": [
         {
           "type": "port_reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "port_identifier_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unpacked_dimension",
           "named": true
         }
       ]
@@ -11617,6 +11627,29 @@
     }
   },
   {
+    "type": "tf_variable_identifier_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "variable_dimension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "threshold",
     "named": true,
     "fields": {},
@@ -12400,6 +12433,25 @@
     }
   },
   {
+    "type": "variable_identifier_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "variable_dimension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "variable_identifier_list",
     "named": true,
     "fields": {},
@@ -12475,6 +12527,29 @@
         },
         {
           "type": "variable_port_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_port_identifier_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constant_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "variable_dimension",
           "named": true
         }
       ]

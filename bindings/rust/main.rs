@@ -3,9 +3,7 @@ use tree_sitter::Parser;
 fn main() {
     let mut parser = Parser::new();
     let language = tree_sitter_verilog::language();
-    parser
-        .set_language(language)
-        .expect("Error loading Rust grammar");
+    parser.set_language(language).expect("Error loading Rust grammar");
     let mut tree = parser
         .parse(
             r#"
@@ -61,11 +59,7 @@ endmodule
 
 fn show(node: &tree_sitter::Node, depth: usize) {
     let kind = node.kind();
-    let mut kind = if !node.is_named() {
-        format!("\"{}\"", kind)
-    } else {
-        format!("{}", kind)
-    };
+    let mut kind = if !node.is_named() { format!("\"{}\"", kind) } else { format!("{}", kind) };
     if node.is_missing() {
         kind = format!("{} (missing)", kind);
     }
