@@ -3508,21 +3508,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "data_type_or_implicit",
-          "named": true
-        },
-        {
-          "type": "lifetime",
-          "named": true
-        },
-        {
-          "type": "list_of_variable_decl_assignments",
-          "named": true
-        },
         {
           "type": "net_type_declaration",
           "named": true
@@ -3533,6 +3521,10 @@
         },
         {
           "type": "type_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
           "named": true
         }
       ]
@@ -6493,6 +6485,36 @@
     }
   },
   {
+    "type": "list_of_named_parameter_assignments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "named_parameter_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_of_named_port_connections",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "named_port_connection",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list_of_net_assignments",
     "named": true,
     "fields": {},
@@ -6523,6 +6545,36 @@
     }
   },
   {
+    "type": "list_of_ordered_parameter_assignments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ordered_parameter_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_of_ordered_port_connections",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ordered_port_connection",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list_of_param_assignments",
     "named": true,
     "fields": {},
@@ -6542,15 +6594,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "named_parameter_assignment",
+          "type": "list_of_named_parameter_assignments",
           "named": true
         },
         {
-          "type": "ordered_parameter_assignment",
+          "type": "list_of_ordered_parameter_assignments",
           "named": true
         }
       ]
@@ -6606,15 +6658,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "named_port_connection",
+          "type": "list_of_named_port_connections",
           "named": true
         },
         {
-          "type": "ordered_port_connection",
+          "type": "list_of_ordered_port_connections",
           "named": true
         }
       ]
@@ -7838,10 +7890,6 @@
           "named": true
         },
         {
-          "type": "delay_control",
-          "named": true
-        },
-        {
           "type": "delay_value",
           "named": true
         },
@@ -7862,11 +7910,38 @@
           "named": true
         },
         {
+          "type": "net_declaration_with_net_type_identifier",
+          "named": true
+        },
+        {
           "type": "net_type",
           "named": true
         },
         {
           "type": "unpacked_dimension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "net_declaration_with_net_type_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "delay_control",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "list_of_net_decl_assignments",
           "named": true
         }
       ]
@@ -12400,6 +12475,29 @@
         },
         {
           "type": "variable_dimension",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "data_type_or_implicit",
+          "named": true
+        },
+        {
+          "type": "lifetime",
+          "named": true
+        },
+        {
+          "type": "list_of_variable_decl_assignments",
           "named": true
         }
       ]

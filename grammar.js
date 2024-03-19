@@ -1189,17 +1189,19 @@ const rules = {
   // A.2.1.3 Type declarations
 
   data_declaration: $ => choice(
-    seq(
-      optional('const'),
-      optional('var'),
-      optional($.lifetime),
-      optional($.data_type_or_implicit),
-      $.list_of_variable_decl_assignments,
-      ';'
-    ),
+    $.variable_declaration,
     $.type_declaration,
     $.package_import_declaration,
     $.net_type_declaration
+  ),
+
+  variable_declaration: $ => seq(
+    optional('const'),
+    optional('var'),
+    optional($.lifetime),
+    optional($.data_type_or_implicit),
+    $.list_of_variable_decl_assignments,
+    ';'
   ),
 
   package_import_declaration: $ => seq(
@@ -1228,12 +1230,7 @@ const rules = {
       $.list_of_net_decl_assignments,
       ';'
     ),
-    seq(
-      $.net_type_identifier,
-      optional($.delay_control),
-      $.list_of_net_decl_assignments,
-      ';'
-    ),
+    $.net_declaration_with_net_type_identifier,
     seq(
       'interconnect',
       optional($.implicit_data_type),
@@ -1241,6 +1238,13 @@ const rules = {
       sep1(',', seq($.net_identifier, repeat($.unpacked_dimension))),
       ';'
     )
+  ),
+
+  net_declaration_with_net_type_identifier: $ => seq(
+    $.net_type_identifier,
+    optional($.delay_control),
+    $.list_of_net_decl_assignments,
+    ';'
   ),
 
   type_declaration: $ => seq(
@@ -2595,9 +2599,13 @@ const rules = {
   ),
 
   list_of_parameter_assignments: $ => choice(
-    sep1(',', $.ordered_parameter_assignment),
-    sep1(',', $.named_parameter_assignment)
+    $.list_of_ordered_parameter_assignments,
+    $.list_of_named_parameter_assignments,
   ),
+
+  list_of_ordered_parameter_assignments: $ => sep1(',', $.ordered_parameter_assignment),
+  
+  list_of_named_parameter_assignments: $ => sep1(',', $.named_parameter_assignment),
 
   ordered_parameter_assignment: $ => $.param_expression,
 
@@ -2616,9 +2624,13 @@ const rules = {
   // Reordered
 
   list_of_port_connections: $ => choice(
-    sep1(',', $.named_port_connection),
-    sep1(',', $.ordered_port_connection)
+    $.list_of_named_port_connections,
+    $.list_of_ordered_port_connections,
   ),
+
+  list_of_named_port_connections: $ => sep1(',', $.named_port_connection),
+
+  list_of_ordered_port_connections: $ => sep1(',', $.ordered_port_connection),
 
   ordered_port_connection: $ => seq(
     repeat($.attribute_instance),
@@ -5006,5 +5018,12 @@ module.exports = grammar({
     [$.port_identifier_declaration, $.variable_identifier_declaration],
     [$.port_identifier_declaration, $.variable_port_identifier_declaration],
     [$.port_identifier_declaration, $.variable_dimension],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.module_instantiation, $.interface_instantiation, $.program_instantiation, $.checker_instantiation, $.udp_instantiation],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.module_instantiation, $.interface_instantiation, $.program_instantiation, $.checker_instantiation, $.udp_instantiation],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.interface_instantiation, $.program_instantiation, $.checker_instantiation],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.interface_instantiation, $.program_instantiation, $.checker_instantiation],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.checker_instantiation],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.checker_instantiation],
   ],
 });

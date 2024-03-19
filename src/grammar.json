@@ -5750,65 +5750,8 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "const"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "var"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "lifetime"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "data_type_or_implicit"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "list_of_variable_decl_assignments"
-            },
-            {
-              "type": "STRING",
-              "value": ";"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "variable_declaration"
         },
         {
           "type": "SYMBOL",
@@ -5821,6 +5764,67 @@
         {
           "type": "SYMBOL",
           "name": "net_type_declaration"
+        }
+      ]
+    },
+    "variable_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "const"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "var"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lifetime"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "data_type_or_implicit"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_of_variable_decl_assignments"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -6055,33 +6059,8 @@
           ]
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "net_type_identifier"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "delay_control"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "list_of_net_decl_assignments"
-            },
-            {
-              "type": "STRING",
-              "value": ";"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "net_declaration_with_net_type_identifier"
         },
         {
           "type": "SEQ",
@@ -6189,6 +6168,35 @@
               "value": ";"
             }
           ]
+        }
+      ]
+    },
+    "net_declaration_with_net_type_identifier": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "net_type_identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "delay_control"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_of_net_decl_assignments"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -16603,72 +16611,80 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "ordered_parameter_assignment"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "ordered_parameter_assignment"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "list_of_ordered_parameter_assignments"
         },
         {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "named_parameter_assignment"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "named_parameter_assignment"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "list_of_named_parameter_assignments"
         }
       ]
+    },
+    "list_of_ordered_parameter_assignments": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "ordered_parameter_assignment"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "ordered_parameter_assignment"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "list_of_named_parameter_assignments": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "named_parameter_assignment"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "named_parameter_assignment"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
     },
     "ordered_parameter_assignment": {
       "type": "SYMBOL",
@@ -16756,72 +16772,80 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "named_port_connection"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "named_port_connection"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "list_of_named_port_connections"
         },
         {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "ordered_port_connection"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "ordered_port_connection"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "list_of_ordered_port_connections"
         }
       ]
+    },
+    "list_of_named_port_connections": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "named_port_connection"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "named_port_connection"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "list_of_ordered_port_connections": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "ordered_port_connection"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "ordered_port_connection"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
     },
     "ordered_port_connection": {
       "type": "SEQ",
@@ -31453,6 +31477,62 @@
     [
       "port_identifier_declaration",
       "variable_dimension"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "module_instantiation",
+      "interface_instantiation",
+      "program_instantiation",
+      "checker_instantiation",
+      "udp_instantiation"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "module_instantiation",
+      "interface_instantiation",
+      "program_instantiation",
+      "checker_instantiation",
+      "udp_instantiation"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "interface_instantiation",
+      "program_instantiation",
+      "checker_instantiation"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "interface_instantiation",
+      "program_instantiation",
+      "checker_instantiation"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "checker_instantiation"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "checker_instantiation"
     ]
   ],
   "precedences": [],
