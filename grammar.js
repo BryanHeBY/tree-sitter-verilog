@@ -2587,12 +2587,14 @@ const rules = {
 
   // A.4.1.1 Module instantiation
 
-  module_instantiation: $ => seq(
+  instantiation: $ => seq(
     $.module_identifier,
     optional($.parameter_value_assignment),
     sep1(',', $.hierarchical_instance),
     ';'
   ),
+
+  module_instantiation: $ => $.instantiation,
 
   parameter_value_assignment: $ => seq(
     '#', '(', optional($.list_of_parameter_assignments), ')'
@@ -2654,21 +2656,11 @@ const rules = {
 
   /* A.4.1.2 Interface instantiation */
 
-  interface_instantiation: $ => seq(
-    $.interface_identifier,
-    optional($.parameter_value_assignment),
-    sep1(',', $.hierarchical_instance),
-    ';'
-  ),
+  interface_instantiation: $ => $.instantiation,
 
   /* A.4.1.3 Program instantiation */
 
-  program_instantiation: $ => seq(
-    $.program_identifier,
-    optional($.parameter_value_assignment),
-    sep1(',', $.hierarchical_instance),
-    ';'
-  ),
+  program_instantiation: $ => $.instantiation,
 
   /* A.4.1.4 Checker instantiation */
 
@@ -4831,6 +4823,10 @@ module.exports = grammar({
     // $.output_identifier,
     $.cover_point_identifier,
     $.cross_identifier,
+
+    $.module_instantiation,
+    $.interface_instantiation,
+    $.program_instantiation,
   ],
 
   conflicts: $ => [
@@ -5025,5 +5021,11 @@ module.exports = grammar({
     [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.interface_instantiation, $.program_instantiation, $.checker_instantiation],
     [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.checker_instantiation],
     [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.checker_instantiation],
+    [$.module_common_item, $.module_or_generate_item],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.instantiation, $.checker_instantiation, $.udp_instantiation],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.instantiation, $.checker_instantiation, $.udp_instantiation],
+    [$.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.instantiation, $.checker_instantiation],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.instantiation, $.checker_instantiation, $.udp_instantiation],
+    [$.interface_port_declaration, $.net_declaration_with_net_type_identifier, $.data_type, $.class_type, $.instantiation, $.checker_instantiation],
   ],
 });

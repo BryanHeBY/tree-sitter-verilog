@@ -943,15 +943,7 @@
           "named": true
         },
         {
-          "type": "interface_instantiation",
-          "named": true
-        },
-        {
-          "type": "module_instantiation",
-          "named": true
-        },
-        {
-          "type": "program_instantiation",
+          "type": "instantiation",
           "named": true
         }
       ]
@@ -5748,6 +5740,29 @@
     }
   },
   {
+    "type": "instantiation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "hierarchical_instance",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parameter_value_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "integer_atom_type",
     "named": true,
     "fields": {}
@@ -5998,29 +6013,6 @@
         },
         {
           "type": "unpacked_dimension",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "interface_instantiation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "hierarchical_instance",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "parameter_value_assignment",
           "named": true
         }
       ]
@@ -7321,7 +7313,7 @@
           "named": true
         },
         {
-          "type": "interface_instantiation",
+          "type": "instantiation",
           "named": true
         },
         {
@@ -7334,10 +7326,6 @@
         },
         {
           "type": "net_alias",
-          "named": true
-        },
-        {
-          "type": "program_instantiation",
           "named": true
         }
       ]
@@ -7373,29 +7361,6 @@
         },
         {
           "type": "timeunits_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "module_instantiation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "hierarchical_instance",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "parameter_value_assignment",
           "named": true
         }
       ]
@@ -7481,11 +7446,11 @@
           "named": true
         },
         {
-          "type": "module_common_item",
+          "type": "instantiation",
           "named": true
         },
         {
-          "type": "module_instantiation",
+          "type": "module_common_item",
           "named": true
         },
         {
@@ -9544,29 +9509,6 @@
         },
         {
           "type": "loop_generate_construct",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "program_instantiation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "hierarchical_instance",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "parameter_value_assignment",
           "named": true
         }
       ]

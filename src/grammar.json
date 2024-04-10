@@ -16520,7 +16520,7 @@
         }
       ]
     },
-    "module_instantiation": {
+    "instantiation": {
       "type": "SEQ",
       "members": [
         {
@@ -16577,6 +16577,10 @@
           "value": ";"
         }
       ]
+    },
+    "module_instantiation": {
+      "type": "SYMBOL",
+      "name": "instantiation"
     },
     "parameter_value_assignment": {
       "type": "SEQ",
@@ -16935,120 +16939,12 @@
       ]
     },
     "interface_instantiation": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "interface_identifier"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "parameter_value_assignment"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "hierarchical_instance"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "hierarchical_instance"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "instantiation"
     },
     "program_instantiation": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "program_identifier"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "parameter_value_assignment"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PREC_LEFT",
-          "value": 0,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "hierarchical_instance"
-              },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PREC_LEFT",
-                  "value": 0,
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "hierarchical_instance"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "instantiation"
     },
     "checker_instantiation": {
       "type": "SEQ",
@@ -31533,6 +31429,51 @@
       "data_type",
       "class_type",
       "checker_instantiation"
+    ],
+    [
+      "module_common_item",
+      "module_or_generate_item"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "instantiation",
+      "checker_instantiation",
+      "udp_instantiation"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "instantiation",
+      "checker_instantiation",
+      "udp_instantiation"
+    ],
+    [
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "instantiation",
+      "checker_instantiation"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "instantiation",
+      "checker_instantiation",
+      "udp_instantiation"
+    ],
+    [
+      "interface_port_declaration",
+      "net_declaration_with_net_type_identifier",
+      "data_type",
+      "class_type",
+      "instantiation",
+      "checker_instantiation"
     ]
   ],
   "precedences": [],
@@ -31584,7 +31525,10 @@
     "property_identifier",
     "sequence_identifier",
     "cover_point_identifier",
-    "cross_identifier"
+    "cross_identifier",
+    "module_instantiation",
+    "interface_instantiation",
+    "program_instantiation"
   ],
   "supertypes": []
 }
